@@ -224,7 +224,7 @@
             </div>
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Masukan Uang Pelanggan</label>
-              <input type="text" class="form-control" name="uang_pelanggan" id="uang_pelanggan" onkeyup="sum();" maxlength="9" placeholder="Masukan Uang Pelanggan" onkeypress="return hanyaAngka(event)" required>
+              <input type="text" class="form-control" name="uang_pelanggan" id="uang_pelanggan" onkeyup="sum(); formatRibuan(this);" maxlength="15" placeholder="Masukkan Uang Pelanggan" onkeypress="return hanyaAngka(event)" required>
             </div>
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Uang Kembalian Pelanggan</label>

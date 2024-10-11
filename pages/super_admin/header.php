@@ -81,13 +81,33 @@ if(!isset($_SESSION['super_admin'])){
 
   <script>
     function hanyaAngka(evt) {
-      var charCode = (evt.which) ? evt.which : event.keyCode
-      if (charCode > 31 && (charCode < 48 || charCode > 57))
-  
-      return false;
-      return true;
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        // Angka 46 untuk titik desimal
+        if (charCode != 46 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
     }
-  </script>
+
+    function formatRibuan(input) {
+        // Hapus semua karakter selain angka
+        var nilai = input.value.replace(/[^,\d]/g, '').toString();
+        
+        // Pisahkan angka menjadi kelompok ribuan
+        var split = nilai.split(',');
+        var sisa = split[0].length % 3;
+        var rupiah = split[0].substr(0, sisa);
+        var ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+        // Tambahkan titik jika input melebihi 3 digit
+        if (ribuan) {
+            separator = sisa ? '.' : '';
+            rupiah += separator + ribuan.join('.');
+        }
+
+        input.value = rupiah;
+    }
+</script>
 
 
   <!-- selesai fungsi input angka saja -->
