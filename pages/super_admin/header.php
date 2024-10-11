@@ -346,6 +346,13 @@ if(!isset($_SESSION['super_admin'])){
               <p>Master Pengguna</p>
             </a>
           </li>
+          <li class="nav-header">Pelanggan</li>
+          <li class="nav-item">
+            <a href="index.php?hal=pelanggan" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>Master Pelanggan</p>
+            </a>
+          </li>
           <li class="nav-header">Profil</li>
           <li class="nav-item">
             <a href="index.php?hal=profil" class="nav-link">

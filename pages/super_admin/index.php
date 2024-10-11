@@ -15,6 +15,7 @@
             case 'laporan'                  : include 'data/laporan.php'; break;
             case 'laporan_excel'            : include 'data/laporan_excel.php'; break;
             case 'pengguna'                 : include 'data/pengguna.php'; break;
+            case 'pelanggan'                 : include 'data/pelanggan.php'; break;
             case 'profil'                   : include 'data/profil.php'; break;
             case 'pengaturan'               : include 'data/pengaturan.php'; break;
             case 'transaksi_barang_masuk'   : include 'data/transaksi_barang_masuk.php'; break;

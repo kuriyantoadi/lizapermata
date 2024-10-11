@@ -142,7 +142,7 @@
   </div>
   <!--------------------------- END MODAL --------------------------->
   <script>
-        function ubahdata(key_kategori){
+      function ubahdata(key_kategori){
             var ajaxbos = new XMLHttpRequest();
                 ajaxbos.onreadystatechange= function(){
                     if(ajaxbos.readyState==4 && ajaxbos.status==200){
@@ -151,10 +151,11 @@
                 };
                 ajaxbos.open("GET","ubah/ubah_kategori.php?q="+key_kategori+"&s=#",true);
                 ajaxbos.send();
-            }
-        function hapusdata(key_kategori){
-            document.getElementById('key_kategori').value=key_kategori;
-        }
+      }
+
+      function hapusdata(key_kategori){
+          document.getElementById('key_kategori').value=key_kategori;
+      }
   </script>
  
   <script> 
