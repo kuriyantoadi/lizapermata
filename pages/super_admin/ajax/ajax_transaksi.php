@@ -46,7 +46,8 @@ if($_GET['action'] == "table_data"){
                           RIGHT JOIN transaksi AS trs ON trs.oleh = usr.id_user 
                           LEFT JOIN tb_pelanggan AS plg ON trs.id_pelanggan = plg.id_pelanggan
                           WHERE trs.kode_keranjang LIKE '%$search%' 
-                             OR trs.total_harga LIKE '%$search%' 
+                             OR trs.total_harga LIKE '%$search%'
+                             OR plg.nama_pelanggan LIKE '%$search%' 
                           ORDER BY $order $dir 
                           LIMIT $limit 
                           OFFSET $start");
