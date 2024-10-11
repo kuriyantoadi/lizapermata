@@ -35,7 +35,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-              <li class="breadcrumb-item active">Keranjang Belanja</li>
+              <li class="breadcrumb-item active">Keranjang Transaksi</li>
             </ol>
           </div>
         </div>
@@ -54,7 +54,7 @@
                   <h5><i class="icon fas fa-info"></i> Info!</h5>
                   Konfirmasi ulang pesanan kepada pelanggan sebelum anda menekan tombol bayar dan cetak.
                 </div>
-                <button type="button" class="btn bg-gradient-primary" data-toggle="modal" data-target="#modal-default"><i class="fa fa-plus"></i> Tambah produk baru kedalam keranjang</button>
+                <button type="button" class="btn bg-gradient-primary" data-toggle="modal" data-target="#modal-default"><i class="fa fa-plus"></i> Tambah layanan baru kedalam keranjang</button>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -62,8 +62,8 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>Nama Produk</th>
-                    <th>Kategori Produk</th>
+                    <th>Nama Layanan</th>
+                    <th>Kategori Layanan</th>
                     <th>Banyaknya</th>
                     <th>Harga Satuan</th>
                     <th>Total Harga</th>
@@ -104,7 +104,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Tambah Produk Kedalam Keranjang</h4>
+          <h4 class="modal-title">Tambah Layanan Kedalam Keranjang</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -114,13 +114,13 @@
             <div class="form-group">
               <label>Nama Kategori</label>
               <select class="form-control" style="width: 100%;" name="id_kategori" id="get_id_kategori_nya" required>
-                <option value=""> Pilih Kategori Produk</option>
+                <option value=""> Pilih Kategori Layanan</option>
               </select>
             </div>
             <div class="form-group">
-              <label>Nama Produk</label>
+              <label>Nama Layanan</label>
               <select class="form-control" style="width: 100%;" name="id_produk" id="get_id_produk_nya" required>
-                <option value=""> Pilih Produk</option>
+                <option value=""> Pilih Layanan</option>
               </select>
             </div>
             <div class="form-group">
@@ -139,7 +139,7 @@
     </div>
     <!-- /.modal-dialog -->
   </div>
-  
+
   <!--------------------------- MODAL --------------------------->
   <div class="modal fade" id="modal-delete">
     <div class="modal-dialog modal-lg">
@@ -152,7 +152,7 @@
         </div>
         <form action="proses/proses_transaksi.php" method="post">
           <div class="modal-body">
-            Apa anda yakin ingin menghapus produk ini dari keranjang belanja ?
+            Apa anda yakin ingin menghapus layanan ini dari keranjang belanja ?
           </div>
           <div class="modal-footer justify-content-between">
             <input type="hidden" id="id_keranjang" name="id_keranjang" value="">
@@ -230,27 +230,12 @@
               <label for="recipient-name" class="col-form-label">Uang Kembalian Pelanggan</label>
               <input type="text" class="form-control" name="kembalian_pelanggan" id="kembalian_pelanggan" maxlength="9" placeholder="Jumlah Kembalian Uang Pelanggan" onkeypress="return hanyaAngka(event)" readonly required>
             </div>
-            <!-- <div class="form-group">
-
-              <label for="recipient-name" class="col-form-label">Pilih Pelanggan</label>
-                <select name="id_pelanggan" id="" class="form-control" required>
-                  <option value="">Pilih Pelanggan</option>
-                  <?php
-                  // Query untuk mengambil data pelanggan dari database
-                  $query_pelanggan = mysqli_query($koneksi, "SELECT id_pelanggan, nama_pelanggan FROM tb_pelanggan");
-                  
-                  // Menampilkan setiap pelanggan dalam <option>
-                  while($data_pelanggan = mysqli_fetch_array($query_pelanggan)) {
-                    echo '<option value="'.$data_pelanggan['id_pelanggan'].'">'.$data_pelanggan['nama_pelanggan'].'</option>';
-                  }
-                  ?>
-                </select>
-            </div> -->
-
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Catatan/ Pesan</label>
               <input type="text" class="form-control" name="catatan" value="-" maxlength="100" required>
+              <!-- <small>Catatan bersifat opsianal, isi jika ada catatan *contoh Sambalnya dipisah, dll</small> -->
               <small>Catatan bersifat opsianal, isi jika ada catatan</small>
+
             </div>
           </div>
           <div class="modal-footer justify-content-between">
@@ -282,7 +267,7 @@
 
   <script> 
        $(function(){
-  
+
             $('.table').DataTable({
                "responsive": true,
                "processing": true,
@@ -298,10 +283,10 @@
                    { "data": "nama_kategori" },
                    { "data": "qty_produk" },
                    { "data": "harga_satuan" },
-                   { "data": "hargakaliqty" },
+                  //  { "data": "hargakaliqty" },
                    { "data": "key_keranjang" },
                ]  
-  
+
            });
          });
  </script>
@@ -315,7 +300,7 @@
               $("#get_id_kategori_nya").html(msg);
             }
         });
-        
+
         $("#get_id_kategori_nya").change(function(){
       	var get_id_kategori_nya = $("#get_id_kategori_nya").val();
           	$.ajax({
