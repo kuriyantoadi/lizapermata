@@ -147,86 +147,31 @@
     <!-- /.modal-dialog -->
   </div>
 
-
   <!-- modal edit -->
-
-
-  <!-- Modal Edit Pelanggan -->
-<div class="modal fade" id="modal-edit">
+  <div class="modal fade" id="ubah">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Edit Data Pelanggan</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <!-- Form Edit Pelanggan -->
-            <form action="proses/proses_pelanggan.php" method="post">
-                <div class="modal-body">
-                    <!-- Hidden Input ID Pelanggan -->
-                    <input type="hidden" name="id_pelanggan" id="edit_id_pelanggan">
-
-                    <!-- Input Nama Pelanggan -->
-                    <div class="form-group">
-                        <label for="edit_nama_pelanggan" class="col-form-label">Nama Pelanggan</label>
-                        <input type="text" class="form-control" name="nama_pelanggan" id="edit_nama_pelanggan" maxlength="50" placeholder="Masukkan Nama Pelanggan" required>
-                    </div>
-
-                    <!-- Input No Rekening -->
-                    <div class="form-group">
-                        <label for="edit_no_rek" class="col-form-label">No Rekening</label>
-                        <input type="text" class="form-control" name="no_rek" id="edit_no_rek" maxlength="20" placeholder="Masukkan No Rekening" required>
-                    </div>
-
-                    <!-- Input Alamat -->
-                    <div class="form-group">
-                        <label for="edit_alamat" class="col-form-label">Alamat</label>
-                        <textarea class="form-control" name="alamat" id="edit_alamat" rows="3" placeholder="Masukkan Alamat" required></textarea>
-                    </div>
-
-                    <!-- Input No HP -->
-                    <div class="form-group">
-                        <label for="edit_no_hp" class="col-form-label">No HP</label>
-                        <input type="text" class="form-control" name="no_hp" id="edit_no_hp" maxlength="15" placeholder="Masukkan No HP" required>
-                    </div>
-
-                    <!-- Input Status Pelanggan -->
-                    <div class="form-group">
-                        <label for="edit_status_pelanggan" class="col-form-label">Status Pelanggan</label>
-                        <select class="form-control" name="status_pelanggan" id="edit_status_pelanggan" required>
-                            <option value="1">Aktif</option>
-                            <option value="2">Tidak Aktif</option>
-                        </select>
-                    </div>
-
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                    <button type="submit" name="edit" class="btn btn-primary">Simpan Perubahan</button>
-                </div>
-            </form>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Ubah data</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <!-- /.modal-content -->
+        <form action="proses/proses_pelanggan.php" method="post">
+          <div class="modal-body">
+            <span id="dub"></span>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+            <button type="submit" name="ubah" class="btn btn-primary">Perbaharui</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
-</div>
+  </div>
 
-<script>
-    // This function fills in the form with the data to be edited
-    function editdata(id_pelanggan, nama_pelanggan, no_rek, alamat, no_hp, status_pelanggan) {
-        document.getElementById('edit_id_pelanggan').value = id_pelanggan;
-        document.getElementById('edit_nama_pelanggan').value = nama_pelanggan;
-        document.getElementById('edit_no_rek').value = no_rek;
-        document.getElementById('edit_alamat').value = alamat;
-        document.getElementById('edit_no_hp').value = no_hp;
-        document.getElementById('edit_status_pelanggan').value = status_pelanggan;
-    }
-</script>
-
-
-  <!-- modal edit -->
 
  
   <script> 
@@ -257,6 +202,18 @@
  </script>
 
  <script>
+    function ubahdata(key_kategori){
+      var ajaxbos = new XMLHttpRequest();
+          ajaxbos.onreadystatechange= function(){
+              if(ajaxbos.readyState==4 && ajaxbos.status==200){
+                  document.getElementById("dub").innerHTML= ajaxbos.responseText;
+              }
+          };
+          ajaxbos.open("GET","ubah/ubah_pelanggan.php?q="+key_kategori+"&s=#",true);
+          ajaxbos.send();
+    }
+
+
     function hapusdata(id_pelanggan) {
         document.getElementById("id_pelanggan_hapus").value = id_pelanggan;
     }

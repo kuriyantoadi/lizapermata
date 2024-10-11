@@ -1,11 +1,11 @@
 <?php
 include '../../../koneksi.php'; // Include your database connection file
 
-// Get the key_pelanggan from the GET request
-$key_pelanggan = addslashes(trim($_GET['q']));
+// Get the id_pelanggan from the GET request
+$id_pelanggan = addslashes(trim($_GET['q']));
 
 // Query to select the customer details
-$query = mysqli_query($koneksi, "SELECT * FROM pelanggan WHERE key_pelanggan='$key_pelanggan'");
+$query = mysqli_query($koneksi, "SELECT * FROM tb_pelanggan WHERE id_pelanggan='$id_pelanggan'");
 $hasil_pelanggan = mysqli_fetch_array($query);
 
 // Extract the necessary fields from the result
@@ -18,7 +18,7 @@ $status_pelanggan = $hasil_pelanggan['status_pelanggan'];
 ?>
 <div class="form-group">
     <label for="recipient-name" class="col-form-label">Nama Pelanggan</label>
-    <input type="hidden" class="form-control" name="key_pelanggan" value="<?= $key_pelanggan ?>" readonly required>
+    <input type="hidden" class="form-control" name="id_pelanggan" value="<?= $id_pelanggan ?>" readonly required>
     <input type="text" class="form-control" name="nama_pelanggan" maxlength="50" placeholder="Masukkan Nama Pelanggan" value="<?= htmlspecialchars($nama_pelanggan) ?>" required>
 </div>
 <div class="form-group">
