@@ -39,7 +39,7 @@ if($_GET['action'] == "table_data"){
            $query = $koneksi->query("SELECT * 
                           FROM user AS usr 
                           RIGHT JOIN transaksi AS trs ON trs.oleh = usr.id_user 
-                          LEFT JOIN tb_pelanggan AS plg ON trs.id_pelanggan = plg.id_pelanggan 
+                          RIGHT JOIN tb_pelanggan AS plg ON trs.id_pelanggan = plg.id_pelanggan 
                           WHERE trs.kode_keranjang LIKE '%$search%' 
                              OR trs.total_harga LIKE '%$search%' 
                           ORDER BY $order $dir 
