@@ -30,9 +30,14 @@ if($_GET['action'] == "table_data"){
              
         if(empty($_POST['search']['value']))
         {            
-        //  $query = $koneksi->query("SELECT * FROM user AS usr RIGHT JOIN transaksi AS trs ON trs.oleh=usr.id_user order by $order $dir
-        //                                               LIMIT $limit
-        //                                               OFFSET $start");
+         $query = $koneksi->query("SELECT *
+                                    FROM user AS usr
+                                    RIGHT JOIN transaksi AS trs ON trs.oleh = usr.id_user
+                                    LEFT JOIN tb_pelanggan AS plg ON trs.id_pelanggan = plg.id_pelanggan
+                                    ORDER BY $order $dir
+                                    LIMIT $limit
+                                    OFFSET $start;
+                                    ");
         }
         else {
            $search = $_POST['search']['value']; 
