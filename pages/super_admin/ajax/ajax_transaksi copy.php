@@ -11,7 +11,8 @@ if($_GET['action'] == "table_data"){
                                3=> 'jumlah_yang_dibeli',
                                4=> 'total_harga',
                                5=> 'nama',
-                               6=> 'kode_keranjang',
+                               6=> 'nama_pelanggan',
+                               7=> 'kode_keranjang',
                            );
  
       $querycount = $koneksi->query("SELECT count(id_transaksi) as jumlah FROM transaksi");
@@ -35,10 +36,15 @@ if($_GET['action'] == "table_data"){
         }
         else {
             $search = $_POST['search']['value']; 
-            $query = $koneksi->query("SELECT * FROM user AS usr RIGHT JOIN transaksi AS trs ON trs.oleh=usr.id_user WHERE trs.kode_keranjang LIKE '%$search%' OR trs.total_harga LIKE '%$search%'
-                                                         order by $order $dir
-                                                         LIMIT $limit
-                                                         OFFSET $start");
+            $query = $koneksi->query("SELECT *
+                                        FROM user AS usr
+                                        RIGHT JOIN transaksi AS trs ON trs.oleh = usr.id_user
+                                        LEFT JOIN tb_pelanggan AS plg ON trs.id_pelanggan = plg.id_pelanggan
+                                        WHERE trs.kode_keranjang LIKE '%$search%' OR trs.total_harga LIKE '%$search%'
+                                        ORDER BY $order $dir
+                                        LIMIT $limit
+                                        OFFSET $start
+                                        ");
  
  
            $querycount = $koneksi->query("SELECT count(id_transaksi) as jumlah FROM user AS usr RIGHT JOIN transaksi AS trs ON trs.oleh=usr.id_user WHERE trs.kode_keranjang LIKE '%$search%' OR trs.total_harga LIKE '%$search%'");
@@ -60,6 +66,7 @@ if($_GET['action'] == "table_data"){
                 $nestedData['jumlah_yang_dibeli']   = $r['jumlah_yang_dibeli'];
                 $nestedData['total_harga']          = 'Rp. '.number_format($r['total_harga']);
                 $nestedData['nama']                 = $r['nama'];
+                $nestedData['nama_pelanggan']       = $r['nama_pelanggan'];
                 $nestedData['aksi']                 =  '
                                                         <center>
                                                             <a href="invoice.php?kode_keranjang='.$kode_keranjang.'" target="_blank" class="btn btn-block btn-success btn-sm" value='.$kode_keranjang.'><i class="fa fa-print"></i> Invoice</a>
