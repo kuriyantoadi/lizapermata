@@ -238,7 +238,7 @@
                   <option value="">Pilih Pelanggan</option>
                   <?php
                   // Query untuk mengambil data pelanggan dari database
-                  $query_pelanggan = mysqli_query($koneksi, "SELECT id_pelanggan, nama_pelanggan FROM tb_pelanggan");
+                  $query_pelanggan = mysqli_query($koneksi, "SELECT id_pelanggan, nama_pelanggan FROM tb_pelanggan ORDER BY nama_pelanggan ASC; ");
 
                   // Menampilkan setiap pelanggan dalam <option>
                   while($data_pelanggan = mysqli_fetch_array($query_pelanggan)) {
