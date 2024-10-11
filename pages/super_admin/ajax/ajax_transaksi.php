@@ -35,25 +35,24 @@ if($_GET['action'] == "table_data"){
                                                       OFFSET $start");
         }
         else {
-            $search = $_POST['search']['value']; 
-           $query = $koneksi->query("SELECT * 
+           $search = $_POST['search']['value']; 
+        //    $query = $koneksi->query("SELECT * 
+        //                   FROM user AS usr 
+        //                   RIGHT JOIN transaksi AS trs ON trs.oleh = usr.id_user 
+        //                   LEFTJOIN tb_pelanggan AS plg ON trs.id_pelanggan = plg.id_pelanggan 
+        //                   WHERE trs.kode_keranjang LIKE '%$search%' 
+        //                      OR trs.total_harga LIKE '%$search%' 
+        //                   ORDER BY $order $dir 
+        //                   LIMIT $limit 
+        //                   OFFSET $start");
+
+             $query = $koneksi->query("SELECT * 
                           FROM user AS usr 
                           RIGHT JOIN transaksi AS trs ON trs.oleh = usr.id_user 
-                          RIGHT JOIN tb_pelanggan AS plg ON trs.id_pelanggan = plg.id_pelanggan 
-                          WHERE trs.kode_keranjang LIKE '%$search%' 
-                             OR trs.total_harga LIKE '%$search%' 
-                          ORDER BY $order $dir 
-                          LIMIT $limit 
-                          OFFSET $start");
+                          LEFT JOIN tb_pelanggan AS plg ON trs.id_pelanggan = plg.id_pelanggan 
+                          ");
 
-                            while ($row = $query->fetch_array()) {
-                                echo '<pre>';
-                                print_r($row);  // Lihat apakah data pelanggan muncul di sini
-                                echo '</pre>';
-                            }
-
- 
- 
+                          
            $querycount = $koneksi->query("SELECT count(id_transaksi) as jumlah FROM user AS usr RIGHT JOIN transaksi AS trs ON trs.oleh=usr.id_user WHERE trs.kode_keranjang LIKE '%$search%' OR trs.total_harga LIKE '%$search%'");
            $datacount = $querycount->fetch_array();
            $totalFiltered = $datacount['jumlah'];
