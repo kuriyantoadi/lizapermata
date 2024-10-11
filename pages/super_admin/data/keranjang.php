@@ -301,7 +301,7 @@
                    { "data": "nama_kategori" },
                    { "data": "qty_produk" },
                    { "data": "harga_satuan" },
-                  //  { "data": "hargakaliqty" },
+                   { "data": "hargakaliqty" },
                    { "data": "key_keranjang" },
                ]  
 
