@@ -30,13 +30,20 @@ if($_GET['action'] == "table_data"){
              
         if(empty($_POST['search']['value']))
         {            
-         $query = $koneksi->query("SELECT * FROM user AS usr RIGHT JOIN transaksi AS trs ON trs.oleh=usr.id_user order by $order $dir
-                                                      LIMIT $limit
-                                                      OFFSET $start");
+        //  $query = $koneksi->query("SELECT * FROM user AS usr RIGHT JOIN transaksi AS trs ON trs.oleh=usr.id_user order by $order $dir
+        //                                               LIMIT $limit
+        //                                               OFFSET $start");
         }
         else {
            $search = $_POST['search']['value']; 
-           $query = $koneksi->query("");
+           $query = $koneksi->query("SELECT * 
+                          FROM user AS usr 
+                          RIGHT JOIN transaksi AS trs ON trs.oleh = usr.id_user 
+                          WHERE trs.kode_keranjang LIKE '%$search%' 
+                             OR trs.total_harga LIKE '%$search%' 
+                          ORDER BY $order $dir 
+                          LIMIT $limit 
+                          OFFSET $start");
               
            $querycount = $koneksi->query("SELECT count(id_transaksi) as jumlah FROM user AS usr RIGHT JOIN transaksi AS trs ON trs.oleh=usr.id_user WHERE trs.kode_keranjang LIKE '%$search%' OR trs.total_harga LIKE '%$search%'");
            $datacount = $querycount->fetch_array();
