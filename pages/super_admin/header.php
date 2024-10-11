@@ -78,6 +78,7 @@ if(!isset($_SESSION['super_admin'])){
     });
   </script>
   <!-- fungsi input hanya angka saja -->
+
   <script>
     function hanyaAngka(evt) {
       var charCode = (evt.which) ? evt.which : event.keyCode
@@ -87,6 +88,8 @@ if(!isset($_SESSION['super_admin'])){
       return true;
     }
   </script>
+
+
   <!-- selesai fungsi input angka saja -->
   <!-- ini fungsi untuk cek nama kategori -->
   <script>

@@ -231,6 +231,23 @@
               <input type="text" class="form-control" name="kembalian_pelanggan" id="kembalian_pelanggan" maxlength="9" placeholder="Jumlah Kembalian Uang Pelanggan" onkeypress="return hanyaAngka(event)" readonly required>
             </div>
             <div class="form-group">
+
+            <label for="recipient-name" class="col-form-label">Pilih Pelanggan</label>
+              <select name="id_pelanggan" id="" class="form-control" required>
+                <option value="">Pilih Pelanggan</option>
+                <?php
+                // Query untuk mengambil data pelanggan dari database
+                $query_pelanggan = mysqli_query($koneksi, "SELECT id_pelanggan, nama_pelanggan FROM tb_pelanggan");
+                
+                // Menampilkan setiap pelanggan dalam <option>
+                while($data_pelanggan = mysqli_fetch_array($query_pelanggan)) {
+                  echo '<option value="'.$data_pelanggan['id_pelanggan'].'">'.$data_pelanggan['nama_pelanggan'].'</option>';
+                }
+                ?>
+              </select>
+            </div>
+
+            <div class="form-group">
               <label for="recipient-name" class="col-form-label">Catatan/ Pesan</label>
               <input type="text" class="form-control" name="catatan" value="-" maxlength="100" required>
               <small>Catatan bersifat opsianal, isi jika ada catatan</small>
