@@ -42,6 +42,7 @@
                     <th>Jumlah</th>
                     <th>Total Harga</th>
                     <th>Diproses Oleh</th>
+                    <th>Pelanggan</th>
                     <th><center>Aksi</center></th>
                   </tr>
                   </thead>
@@ -114,6 +115,7 @@
                    { "data": "jumlah_yang_dibeli" },
                    { "data": "total_harga" },
                    { "data": "nama" },
+                   { "data": "nama_pelanggan" },
                    { "data": "aksi" },
                ]  
   
