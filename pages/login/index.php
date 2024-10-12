@@ -27,10 +27,11 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="#" class="h1">Selamat Datang</a>
+      <img src="../../template_beck_end/images/<?= $logo_website ?>" style="width: 150px; height: 150px;">
+      <br><a href="#" class="h3"><?= $nama_website ?></a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg"><?= $nama_website ?></p>
+      <!-- <p class="login-box-msg"><?= $nama_website ?></p> -->
 
       <form action="proses_login.php" method="post">
         <div class="input-group mb-3">
