@@ -1,5 +1,5 @@
 <footer class="main-footer">
-    <strong>Copyright &copy; 2023 <?= $nama_website ?> Version 2.1.</strong>
+    <strong>Copyright &copy; <?= date("Y"); ?> <?= $nama_website ?> Version 2.1.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Developer</b> 

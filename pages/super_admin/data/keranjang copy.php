@@ -333,7 +333,7 @@
         });
      });
 </script>
-<script>
+<!-- <script>
 function sum() {
       var txtFirstNumberValue = document.getElementById('total_bayar_hidden').value;
       var txtSecondNumberValue = document.getElementById('uang_pelanggan').value;
@@ -341,5 +341,25 @@ function sum() {
       if (!isNaN(result)) {
          document.getElementById('kembalian_pelanggan').value = result;
       }
+}
+
+
+</script> -->
+
+<script>
+function sum() {
+    // Ambil nilai total pembayaran (dalam hidden field, tanpa format ribuan)
+    var totalPembayaran = document.getElementById('total_bayar_hidden').value;
+
+    // Ambil nilai uang pelanggan, dan hapus tanda titik pemisah ribuan
+    var uangPelanggan = document.getElementById('uang_pelanggan').value.replace(/\./g, '');
+
+    // Hitung kembalian pelanggan
+    var result = parseInt(uangPelanggan) - parseInt(totalPembayaran);
+
+    // Jika hasil bukan NaN (berarti nilai valid), tampilkan kembalian
+    if (!isNaN(result)) {
+        document.getElementById('kembalian_pelanggan').value = result.toLocaleString('id-ID');
+    }
 }
 </script>

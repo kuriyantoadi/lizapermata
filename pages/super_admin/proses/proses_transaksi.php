@@ -128,7 +128,7 @@ if(isset($_POST['hapus_keranjang_peitem'])){
     $sql = mysqli_query($koneksi, "INSERT INTO transaksi values('','$id_pelanggan','$kode_keranjang','$total_qty','$total_bayar_hidden','$catatan',NOW(),'$key_keranjang','$oleh','$dari_mana_mengetahui','$result_lainya')");
     $sql = mysqli_query($koneksi, "UPDATE keranjang SET status_keranjang='1' WHERE kode_keranjang='$kode_keranjang' AND oleh='$oleh'");
       if ($sql) { 
-        header("Location: ../invoice.php?kode_keranjang=".$kode_keranjang);
+        header("Location: ../nota.php?kode_keranjang=".$kode_keranjang);
       } else {
         header("Location: ../index.php?hal=keranjang&pesan=gagal");
       }
