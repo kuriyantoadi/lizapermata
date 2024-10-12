@@ -74,8 +74,8 @@ if($_GET['action'] == "table_data"){
                 $nestedData['nama_pelanggan']       = $r['nama_pelanggan'];
                 $nestedData['aksi']                 =  '
                                                         <center>
-                                                            <a href="invoice.php?kode_keranjang='.$kode_keranjang.'" target="_blank" class="btn btn-block btn-success btn-sm" value='.$kode_keranjang.'><i class="fa fa-print"></i> Invoice</a>
-                                                            <a href="nota.php?kode_keranjang='.$kode_keranjang.'" target="_blank" class="btn btn-block btn-primary btn-sm" value='.$kode_keranjang.'><i class="fa fa-print"></i> Nota</a>
+                                                            <a href="invoice.php?kode_keranjang='.$kode_keranjang.'" class="btn btn-block btn-success btn-sm" value='.$kode_keranjang.'><i class="fa fa-print"></i> Invoice</a>
+                                                            <a href="nota.php?kode_keranjang='.$kode_keranjang.'" class="btn btn-block btn-primary btn-sm" value='.$kode_keranjang.'><i class="fa fa-print"></i> Nota</a>
                                                             <button type="button" class="btn btn-block btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete" value='.$kode_keranjang.' onclick="hapusdata(this.value)"><i class="fa fa-trash"></i> Hapus</button>
                                                         </center>';
                 $data[] = $nestedData;

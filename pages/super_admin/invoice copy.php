@@ -22,6 +22,18 @@
     $sql_tanggal_beli           = mysqli_fetch_array($query_car_tanggal_beli); 
     $tanggal_transaksi          = $sql_tanggal_beli['tanggal_transaksi'];
 
+    // pelanggan
+    $query_cari_pelanggan     = mysqli_query($koneksi,"SELECT * FROM transaksi, tb_pelanggan WHERE tb_pelanggan.id_pelanggan=transaksi.id_pelanggan AND kode_keranjang='$kode_keranjang'");
+    $sql_pelanggan            = mysqli_fetch_array($query_cari_pelanggan); 
+    $nama_pelanggan           = $sql_pelanggan['nama_pelanggan'];
+    $alamat_pelanggan           = $sql_pelanggan['alamat'];
+    $no_hp_pelanggan           = $sql_pelanggan['no_hp'];
+
+
+    // var_dump($transaksi_pelanggan);
+
+    // exit();
+
 ?>
 
 <!DOCTYPE html>
@@ -32,25 +44,68 @@
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- bootstrap 3.0.2 -->
     <link href="../../template_beck_end/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body onload="print()"> 
-  <center>
-    <table>
-      <tr>
-        <td>
-          <center>
-            <img src="../../template_beck_end/images/<?= $logo_website ?>" style="width: 150px; height: 150px;">
-            <h3><?= $nama_website ?></h3>
-            <h5>Alamat    : <?= $alamat_website ?></h5>
-            <h5>Telepon   : <?= $no_telepon_website ?></h5>
-          </center>
-        </td>
-      </tr>
-    </table>
-    <h5>Struk Pembelian <?= $kode_keranjang ?> Pada <?= tglblnthnjam($tanggal_transaksi) ?></h5>
-  </center>
+  
 
-  <table class="">
+  <table>
+    <tr>
+      <td>
+        <!-- <img src="../../template_beck_end/images/<?= $logo_website ?>" style="width: 50px; height: 50px;"> -->
+      </td>
+      <td>
+        <h2>Invoice # <?= $kode_keranjang ?></h2>
+        <p><?= tglblnthnjam($tanggal_transaksi) ?></p>
+      </td>
+    </tr>
+  </table>
+
+
+  
+
+
+  <div class="row">
+    <div class="col-6 d-flex">
+      
+      <table>
+        <tr>
+          <td colspan=2><h4><b>From<b></h4></td>
+        </tr>
+        <tr>
+          <td><?= $nama_website ?></td>
+        </tr>
+        <tr>
+          <td> <?= $alamat_website ?></td>
+        </tr>
+        <tr>
+          <td><?= $no_telepon_website ?></td>
+        </tr>
+      </table>
+
+    </div>
+    <div class="col-6 d-flex">
+      
+       <table>
+        <tr>
+          <td colspan=2><h4><b>To<b></h4></td>
+        </tr>
+        <tr>
+          <td><?= $nama_pelanggan ?></td>
+        </tr>
+        <tr>
+          <td> <?= $alamat_pelanggan ?></td>
+        </tr>
+        <tr>
+          <td><?= $no_hp_pelanggan ?></td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+  
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Nama Produk</th>

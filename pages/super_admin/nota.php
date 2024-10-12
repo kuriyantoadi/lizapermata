@@ -32,6 +32,16 @@
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- bootstrap 3.0.2 -->
     <link href="../../template_beck_end/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+
+    <style>
+    @media print {
+      .btn-kembali {
+        display: none;
+      }
+    }
+  </style>
+
 </head>
 <body onload="print()"> 
   <center>
@@ -140,5 +150,7 @@
         <br>&nbsp;
         <br>&nbsp;
         <br>&nbsp;
+
+  <a class="btn btn-warning btn-kembali mb-3" href="index.php?hal=transaksi">Ke Halaman Transaksi</a>
 </body>
 </html>
