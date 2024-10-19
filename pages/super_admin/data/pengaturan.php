@@ -43,8 +43,12 @@
                     <input type="text" name="no_telepon" class="form-control" id="exampleInputEmail1" value="<?= $no_telepon_website ?>" placeholder="Masukan No Telepon Toko" required>
                   </div>
                   <div class="form-group">
+                    <label for="exampleInputEmail1">No Rekening</label>
+                    <input type="text" name="no_rekening" class="form-control" id="exampleInputEmail1" value="<?= $no_rekening_website ?>" placeholder="Masukan No Rekening" required>
+                  </div>
+                  <div class="form-group">
                     <label for="exampleInputEmail1">Email Toko</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" value="<?= $email_website ?>" placeholder="Masukan Email Aktif T"oko required>
+                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" value="<?= $email_website ?>" placeholder="Masukan Email Aktif Toko" required>
                   </div>
                   <div class="form-group">
                     <label for="customFile">Logo Toko</label>

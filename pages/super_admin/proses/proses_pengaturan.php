@@ -7,6 +7,7 @@ if(isset($_POST['update_toko'])){
     $alamat      = addslashes(trim($_POST['alamat']));
     $no_telepon  = addslashes(trim($_POST['no_telepon']));
     $email       = addslashes(trim($_POST['email']));
+    $no_rekening = addslashes(trim($_POST['no_rekening']));
     
     //PROSES FOTO
     $foto           = $_FILES['foto']['name'];
@@ -18,7 +19,7 @@ if(isset($_POST['update_toko'])){
     
     if (empty($foto)){
         //kondisi foto kosong
-        $sql = mysqli_query($koneksi, "UPDATE setting_website SET nama_website='$nama',alamat_website='$alamat',no_telepon_website='$no_telepon',email_website='$email'");
+        $sql = mysqli_query($koneksi, "UPDATE setting_website SET nama_website='$nama',alamat_website='$alamat',no_telepon_website='$no_telepon',email_website='$email',no_rekening_website='$no_rekening'");
         if ($sql) { 
           header("Location: ../index.php?hal=pengaturan&pesan=successUpdate");
         } else {

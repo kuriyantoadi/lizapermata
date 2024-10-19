@@ -208,8 +208,9 @@
    
    
     ?>
-        <h5><b>Kasir </b><?= $diproses_oleh; ?></h5>
-        <h5><b>Supir </b><?= $tampil_sopir; ?></h5>
+        <h5><b>No Rekening : </b><?= $no_rekening_website; ?></h5>
+        <h5><b>Kasir : </b><?= $diproses_oleh; ?></h5>
+        <h5><b>Supir : </b><?= $tampil_sopir; ?></h5>
         <center><h5><b>~ Terimakasih atas kunjungan anda, kami harap anda menikmati pelayanan dan bisa datang kembali ~</b></h5></center>
         <br>&nbsp;
         <br>&nbsp;

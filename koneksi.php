@@ -19,6 +19,7 @@ $datasetweb                     = mysqli_fetch_assoc($sql_setweb);
 $nama_website                   = strip_tags($datasetweb['nama_website']);
 $alamat_website                 = strip_tags($datasetweb['alamat_website']);
 $no_telepon_website             = strip_tags($datasetweb['no_telepon_website']);
+$no_rekening_website            = strip_tags($datasetweb['no_rekening_website']);
 $email_website                  = strip_tags($datasetweb['email_website']);
 $logo_website                   = strip_tags($datasetweb['logo_website']);
 
