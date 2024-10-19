@@ -16,7 +16,11 @@
     <input type="hidden" class="form-control" name="id_uang_keluar" value="<?= $id_uang_keluar ?>" readonly required>
     <input type="text" class="form-control" name="nama_barang" maxlength="50" placeholder="Masukan Nama" value="<?= $nama_barang ?>" required>
 </div>
-<div class="form-group">
-    <label for="recipient-name" class="col-form-label">Jumlah Uang</label>
-    <input type="text" class="form-control" name="jumlah_uang" maxlength="50" placeholder="Masukan Jumlah Uang" value="<?= $jumlah_uang ?>" onkeypress="return hanyaAngka(event)" required>
+
+<label for="recipient-name" class="col-form-label">Jumlah Uang</label>
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">Rp.</span>
+    </div>
+    <input type="text" class="form-control" name="jumlah_uang" oninput="formatRibuan_edit(this)" maxlength="50" placeholder="Masukan Jumlah Uang" value="<?= $jumlah_uang ?>" onkeypress="return hanyaAngka(event)" required>
 </div>

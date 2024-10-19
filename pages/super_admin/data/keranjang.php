@@ -349,18 +349,6 @@
         });
      });
 </script>
-<!-- <script>
-function sum() {
-      var txtFirstNumberValue = document.getElementById('total_bayar_hidden').value;
-      var txtSecondNumberValue = document.getElementById('uang_pelanggan').value;
-      var result = parseInt(txtSecondNumberValue) - parseInt(txtFirstNumberValue);
-      if (!isNaN(result)) {
-         document.getElementById('kembalian_pelanggan').value = result;
-      }
-}
-
-
-</script> -->
 
 <script>
 function sum() {

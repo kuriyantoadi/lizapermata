@@ -104,10 +104,15 @@
               <label>Nama</label>
               <input name="nama_barang" type="text" class="form-control" placeholder="Masukkan Nama" maxlength="150" required="">
             </div>
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Jumlah Uang Keluar</label>
-              <input type="text" class="form-control" name="jumlah_uang" maxlength="10" placeholder="Masukan Jumlah Uang Keluar" onkeypress="return hanyaAngka(event)" required>
+
+            <label for="recipient-name" class="col-form-label">Jumlah Uang Keluar</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Rp.</span>
+              </div>
+              <input type="text" class="form-control" name="jumlah_uang" maxlength="10" oninput="formatRibuan(this)" placeholder="Masukan Jumlah Uang Keluar" onkeypress="return hanyaAngka(event)" required>
             </div>
+
           </div>
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
@@ -159,3 +164,18 @@
                 ajaxbos.send();
             }
   </script>
+
+  <script>
+  // Fungsi untuk memformat angka dengan titik ribuan
+    function formatRibuan(input) {
+        let angka = input.value.replace(/\./g, ''); // Hilangkan semua titik
+        input.value = angka.replace(/\B(?=(\d{3})+(?!\d))/g, '.'); // Tambahkan titik setiap 3 digit
+    }
+
+    // Fungsi untuk memformat angka dengan titik ribuan
+    function formatRibuan_edit(input) {
+        let angka = input.value.replace(/\./g, ''); // Hilangkan semua titik
+        input.value = angka.replace(/\B(?=(\d{3})+(?!\d))/g, '.'); // Tambahkan titik setiap 3 digit
+    }
+</script>
+

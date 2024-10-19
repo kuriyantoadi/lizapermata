@@ -6,7 +6,8 @@ $id_session             = $_SESSION['id_user'];
 if(isset($_POST['tambah'])){
   $nama_produk          = addslashes(trim($_POST['nama_produk']));
   $kategori_produk      = addslashes(trim($_POST['kategori_produk']));
-  $harga                = addslashes(trim($_POST['harga']));
+  $harga_ribuan         = str_replace('.', '', $_POST['harga']); // Menghapus titik pemisah ribuan
+  $harga                = addslashes(trim($harga_ribuan));
   $stok                 = addslashes(trim($_POST['stok']));
   $status_aktif         = addslashes(trim($_POST['status_aktif']));
   $key_produk           = md5(date('Ymdhis'));
@@ -35,7 +36,8 @@ if(isset($_POST['ubah'])){
     $key_produk       = addslashes(trim($_POST['key_produk']));
     $nama_produk      = addslashes(trim($_POST['nama_produk']));
     $kategori_produk  = addslashes(trim($_POST['kategori_produk']));
-    $harga_produk     = addslashes(trim($_POST['harga_produk']));
+    $harga_produk     = str_replace('.', '', $_POST['harga_produk']); // Menghapus titik pemisah ribuan
+    $harga_produk     = addslashes(trim($harga_produk));
     $stok             = addslashes(trim($_POST['stok']));
     $status_aktif     = addslashes(trim($_POST['status_aktif']));
 

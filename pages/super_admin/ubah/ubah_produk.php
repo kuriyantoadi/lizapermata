@@ -28,10 +28,20 @@
         <?php } ?>
     </select>
 </div>
-<div class="form-group">
-    <label for="recipient-name" class="col-form-label">Harga Jual</label>
-    <input type="text" class="form-control" name="harga_produk" maxlength="12" placeholder="Masukan Harga Jual" onkeypress="return hanyaAngka(event)" value="<?= $harga_produk ?>" required>
+
+
+<label for="recipient-name" class="col-form-label">Harga Jual</label>
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">Rp.</span>
+    </div>
+    <input type="text" class="form-control" name="harga_produk" oninput="formatRibuan_edit(this)" maxlength="12" placeholder="Masukan Harga Jual" onkeypress="return hanyaAngka(event)" value="<?= $harga_produk ?>" required>
 </div>
+
+<!-- <div class="form-group">
+    <label for="recipient-name" class="col-form-label">Harga Jual</label>
+    <input type="text" class="form-control" name="harga_produk" oninput="formatRibuan_edit(this)" maxlength="12" placeholder="Masukan Harga Jual" onkeypress="return hanyaAngka(event)" value="<?= $harga_produk ?>" required>
+</div> -->
 <div class="form-group">
     <label for="recipient-name" class="col-form-label">Stok</label>
     <input type="text" class="form-control" name="stok" maxlength="12" placeholder="Masukan Stok" onkeypress="return hanyaAngka(event)" value="<?= $stok ?>" required>

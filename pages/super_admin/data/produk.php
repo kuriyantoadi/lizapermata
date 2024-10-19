@@ -89,10 +89,20 @@
                 <?php } ?>
               </select>
             </div>
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Harga Jual</label>
-              <input type="text" class="form-control" name="harga" maxlength="12" placeholder="Masukan Harga Jual" onkeypress="return hanyaAngka(event)" required>
+
+            <label for="recipient-name" class="col-form-label">Harga Jual</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Rp.</span>
+              </div>
+              <input type="text" class="form-control" name="harga" oninput="formatRibuan(this)"  maxlength="12" placeholder="Masukan Harga Jual" onkeypress="return hanyaAngka(event)" required>
             </div>
+
+            <!-- <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Harga Jual</label>
+              <input type="text" class="form-control" name="harga"  oninput="formatRibuan(this)"  maxlength="12" placeholder="Masukan Harga Jual" onkeypress="return hanyaAngka(event)" required>
+            </div> -->
+
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Stok</label>
               <input type="text" class="form-control" name="stok" maxlength="12" placeholder="Masukan Stok" onkeypress="return hanyaAngka(event)" required>
@@ -211,3 +221,19 @@
          });
  
  </script>
+
+
+<script>
+  // Fungsi untuk memformat angka dengan titik ribuan
+    function formatRibuan(input) {
+        let angka = input.value.replace(/\./g, ''); // Hilangkan semua titik
+        input.value = angka.replace(/\B(?=(\d{3})+(?!\d))/g, '.'); // Tambahkan titik setiap 3 digit
+    }
+
+    // Fungsi untuk memformat angka dengan titik ribuan
+    function formatRibuan_edit(input) {
+        let angka = input.value.replace(/\./g, ''); // Hilangkan semua titik
+        input.value = angka.replace(/\B(?=(\d{3})+(?!\d))/g, '.'); // Tambahkan titik setiap 3 digit
+    }
+</script>
+
