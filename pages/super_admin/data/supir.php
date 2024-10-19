@@ -5,12 +5,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Master Pengguna</h1>
+            <h1>Master Supir</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-              <li class="breadcrumb-item active">Pengguna</li>
+              <li class="breadcrumb-item active">Supir</li>
             </ol>
           </div>
         </div>
@@ -32,10 +32,7 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>Username</th>
-                    <th>Nama Pengguna</th>
-                    <th>Email</th>
-                    <th><center>Level</center></th>
+                    <th>Nama Supir</th>                  
                     <th><center>Status Aktif</center></th>
                     <th><center>Aksi</center></th>
                   </tr>
@@ -62,20 +59,16 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Tambah Pengguna Baru</h4>
+          <h4 class="modal-title">Tambah Supir Baru</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="proses/proses_pengguna.php" method="post">
+        <form action="proses/proses_supir.php" method="post">
           <div class="modal-body">
+            
             <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Username</label>
-              <input type="text" class="form-control" name="username" id="username" maxlength="10" placeholder="Masukan Username Baru" required>
-              <span id="pesan_username"></span>
-            </div>
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Nama Lengkap</label>
+              <label for="recipient-name" class="col-form-label">Nama Supir</label>
               <input type="text" class="form-control" name="nama" maxlength="25" placeholder="Masukan Nama Pengguna Baru" required>
             </div>
             <div class="form-group">
@@ -89,7 +82,6 @@
                 <option value="2" selected="selected">Kasir</option>
                 <option value="1">Superadmin</option>
                 <option value="3">Investor</option>
-                <option value="4">Supir</option>
               </select>
             </div>
             <div class="form-group">

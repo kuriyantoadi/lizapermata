@@ -189,17 +189,27 @@
       <?php }
     ?>
     <?php 
-      $query_oleh   = mysqli_query($koneksi,"SELECT
-      * 
-    FROM
-      user AS usr
+
+      //awal kasir
+      $query_oleh   = mysqli_query($koneksi,"SELECT * FROM user AS usr
       INNER JOIN transaksi AS trs ON usr.id_user = trs.oleh 
-  WHERE
+      WHERE
       trs.kode_keranjang = '$kode_keranjang' ");
       $sql_oleh          = mysqli_fetch_array($query_oleh); 
-      $diproses_oleh         = $sql_oleh['nama'];
+      $diproses_oleh     = $sql_oleh['nama'];
+      // akhir kasir
+
+      // awal supir
+      $query_sopir   = mysqli_query($koneksi,"SELECT * FROM transaksi JOIN 
+      user ON transaksi.id_supir = user.id_user WHERE transaksi.kode_keranjang = $kode_keranjang ");
+      $sql_sopir          = mysqli_fetch_array($query_sopir); 
+      $tampil_sopir     = $sql_sopir['nama'];
+      // akhir sopir
+   
+   
     ?>
         <h5><b>Kasir </b><?= $diproses_oleh; ?></h5>
+        <h5><b>Supir </b><?= $tampil_sopir; ?></h5>
         <center><h5><b>~ Terimakasih atas kunjungan anda, kami harap anda menikmati pelayanan dan bisa datang kembali ~</b></h5></center>
         <br>&nbsp;
         <br>&nbsp;

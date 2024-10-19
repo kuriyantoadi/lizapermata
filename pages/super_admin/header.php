@@ -369,6 +369,12 @@ if(!isset($_SESSION['super_admin'])){
               <p>Master Pengguna</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="index.php?hal=supir" class="nav-link">
+              <i class="nav-icon fas fa-truck"></i>
+              <p>Master Supir</p>
+            </a>
+          </li>
           <li class="nav-header">Pelanggan</li>
           <li class="nav-item">
             <a href="index.php?hal=pelanggan" class="nav-link">

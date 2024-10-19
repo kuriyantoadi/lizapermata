@@ -70,6 +70,8 @@ if($_GET['action'] == "table_data"){
                     $new_level = '<center><button type="button" class="btn btn-block btn-warning btn-sm">Kasir</button></center>';
                 } else if ($r['level'] == 3) {
                     $new_level = '<center><button type="button" class="btn btn-block btn-info btn-sm">Investor</button></center>';
+                 } else if ($r['level'] == 4) {
+                    $new_level = '<center><button type="button" class="btn btn-block btn-secondary btn-sm">Supir</button></center>';
                 } else {
                     $new_level = '<center><button type="button" class="btn btn-block btn-danger btn-sm"><i class="fa fa-check"></i> Terjadi Gangguan</button></center>'; 
 
