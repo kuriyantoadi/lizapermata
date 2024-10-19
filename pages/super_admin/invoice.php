@@ -26,13 +26,14 @@
     $query_cari_pelanggan     = mysqli_query($koneksi,"SELECT * FROM transaksi, tb_pelanggan WHERE tb_pelanggan.id_pelanggan=transaksi.id_pelanggan AND kode_keranjang='$kode_keranjang'");
     $sql_pelanggan            = mysqli_fetch_array($query_cari_pelanggan); 
     $nama_pelanggan           = $sql_pelanggan['nama_pelanggan'];
-    $alamat_pelanggan           = $sql_pelanggan['alamat'];
-    $no_hp_pelanggan           = $sql_pelanggan['no_hp'];
+    $alamat_pelanggan         = $sql_pelanggan['alamat'];
+    $no_hp_pelanggan          = $sql_pelanggan['no_hp'];
 
-
-    // var_dump($transaksi_pelanggan);
-
-    // exit();
+    // supir
+    $query_sopir   = mysqli_query($koneksi,"SELECT * FROM transaksi JOIN 
+    user ON transaksi.id_supir = user.id_user WHERE transaksi.kode_keranjang = $kode_keranjang ");
+    $sql_sopir                 = mysqli_fetch_array($query_sopir); 
+    $tampil_sopir              = $sql_sopir['nama'];
 
 ?>
 
@@ -52,6 +53,27 @@
         display: none;
       }
     }
+
+    .font-invoice {
+      color: black;    /* Warna teks hitam */
+      font-size: 14px; /* Ukuran font 14px */
+    }
+
+    .ttd-isi {
+      width: 30%;
+    }
+
+    .ttd-jarak {
+      width: 40%;
+    }
+
+    .table-100 {
+      width: 100%;
+    }
+
+    .td-tinggi {
+      height: 150px;
+    }
   </style>
 
 
@@ -59,38 +81,39 @@
 <body onload="print()"> 
   
 
-  <table>
+   <table class="table-100">
     <tr>
-      <td>
-        <!-- <img src="../../template_beck_end/images/<?= $logo_website ?>" style="width: 50px; height: 50px;"> -->
-      </td>
+     
       <td>
         <h2>Invoice # <?= $kode_keranjang ?></h2>
         <p><?= tglblnthnjam($tanggal_transaksi) ?></p>
       </td>
+      <td>
+        <img src="../../template_beck_end/images/<?= $logo_website ?>" style="width: 70px; height: 70px; float: right;">
+      </td>
     </tr>
   </table>
-
-
-  
-
 
   <div class="row">
     <div class="col-6 d-flex">
       
       <table>
         <tr>
-          <td colspan=2><h4><b>From<b></h4></td>
+          <td class="font-invoice" colspan=2><h4><b>From<b></h4></td>
         </tr>
         <tr>
-          <td><?= $nama_website ?></td>
+          <td class="font-invoice" class="font-invoice"><?= $nama_website ?></td>
         </tr>
         <tr>
-          <td> <?= $alamat_website ?></td>
+          <td class="font-invoice"> <?= $alamat_website ?></td>
         </tr>
         <tr>
-          <td><?= $no_telepon_website ?></td>
+          <td class="font-invoice"><?= $no_telepon_website ?></td>
         </tr>
+         <tr>
+          <td class="font-invoice"><?= $no_rekening_website ?></td>
+        </tr>
+        
       </table>
 
     </div>
@@ -98,29 +121,29 @@
       
        <table>
         <tr>
-          <td colspan=2><h4><b>To<b></h4></td>
+          <td class="font-invoice" colspan=2><h4><b>To<b></h4></td>
         </tr>
         <tr>
-          <td><?= $nama_pelanggan ?></td>
+          <td class="font-invoice"><?= $nama_pelanggan ?></td>
         </tr>
         <tr>
-          <td> <?= $alamat_pelanggan ?></td>
+          <td class="font-invoice"> <?= $alamat_pelanggan ?></td>
         </tr>
         <tr>
-          <td><?= $no_hp_pelanggan ?></td>
+          <td class="font-invoice"><?= $no_hp_pelanggan ?></td>
         </tr>
       </table>
 
     </div>
   </div>
   
-  <table class="table table-bordered">
+  <table class="table table-bordered" style="margin-top: 30px">
     <thead>
       <tr>
-        <th>Nama Produk</th>
-        <th>Qty</th>
-        <th>Harga Satuan</th>
-        <th>Total Harga</th>
+        <th class="font-invoice">Nama Produk</th>
+        <th class="font-invoice">Qty</th>
+        <th class="font-invoice">Harga Satuan</th>
+        <th class="font-invoice">Total Harga</th>
       </tr>
     </thead>
     <tbody>
@@ -150,10 +173,10 @@
           $catatan              = $hasil_keranjang['catatan'];
       ?>
       <tr>
-        <td><?= $nama_produk ?></td>
-        <td><?= $qty_produk ?></td>
-        <td><?= 'Rp '.number_format($harga_satuan) ?></td>
-        <td><?= 'Rp '.number_format($hargakaliqty) ?></td>
+        <td class="font-invoice"><?= $nama_produk ?></td>
+        <td class="font-invoice"><?= $qty_produk ?></td>
+        <td class="font-invoice"><?= 'Rp '.number_format($harga_satuan) ?></td>
+        <td class="font-invoice"><?= 'Rp '.number_format($hargakaliqty) ?></td>
       </tr>
       <?php } ?>
       <?php
@@ -176,8 +199,8 @@
         $total_pembayaran         = $sql_total_bayar['totalbayar'];
     ?>
       <tr>
-        <td>Total Pembayaran</td>
-        <td><?= 'Rp. '.number_format($total_pembayaran) ?></td>
+        <td colspan="3" class="font-invoice">Total Pembayaran</td>
+        <td class="font-invoice"><?= 'Rp. '.number_format($total_pembayaran) ?></td>
       </tr>
     </tbody>
   </table>
@@ -208,9 +231,20 @@
    
    
     ?>
-        <h5><b>No Rekening : </b><?= $no_rekening_website; ?></h5>
         <h5><b>Kasir : </b><?= $diproses_oleh; ?></h5>
         <h5><b>Supir : </b><?= $tampil_sopir; ?></h5>
+
+    <table class="table-100" style="margin-top: 30px">
+      <tr>
+        <td class="font-invoice">Penerima Barang</td>
+        <td class="font-invoice" >Pengirim</td>
+      </tr>
+      <tr>
+        <td class="td-tinggi">________________________</td>
+        <td class="td-tinggi">________________________</td>
+      </tr>
+    </table>
+
         <center><h5><b>~ Terimakasih atas kunjungan anda, kami harap anda menikmati pelayanan dan bisa datang kembali ~</b></h5></center>
         <br>&nbsp;
         <br>&nbsp;

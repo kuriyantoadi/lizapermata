@@ -231,7 +231,6 @@
               <input type="text" class="form-control" name="kembalian_pelanggan" id="kembalian_pelanggan" maxlength="9" placeholder="Jumlah Kembalian Uang Pelanggan" onkeypress="return hanyaAngka(event)" readonly required>
             </div>
 
-
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Pilih Pelanggan</label>
                 <select name="id_pelanggan" id="" class="form-control" required>
@@ -243,6 +242,23 @@
                   // Menampilkan setiap pelanggan dalam <option>
                   while($data_pelanggan = mysqli_fetch_array($query_pelanggan)) {
                     echo '<option value="'.$data_pelanggan['id_pelanggan'].'">'.$data_pelanggan['nama_pelanggan'].'</option>';
+                  }
+                  ?>
+                </select>
+            </div>
+
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Pilih Supir</label>
+                <select name="id_supir" id="" class="form-control" required>
+                  <option value="">Pilih Supir</option>
+                  <option value="-">Tidak Perlu Supir</option>
+                  <?php
+                  // Query untuk mengambil data pelanggan dari database
+                  $query_supir = mysqli_query($koneksi, "SELECT id_user, nama FROM user WHERE level='4' ORDER BY nama ASC; ");
+
+                  // Menampilkan setiap pelanggan dalam <option>
+                  while($data_supir = mysqli_fetch_array($query_supir)) {
+                    echo '<option value="'.$data_supir['id_user'].'">'.$data_supir['nama'].'</option>';
                   }
                   ?>
                 </select>

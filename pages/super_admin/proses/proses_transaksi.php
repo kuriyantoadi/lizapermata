@@ -8,7 +8,7 @@ if(isset($_POST['tambah'])){
   $id_produk                = addslashes(trim($_POST['id_produk']));
   $banyaknya                = addslashes(trim($_POST['banyaknya']));
   $kode_keranjang           = addslashes(trim($_POST['kode_keranjang']));
-  $id_pelanggan           = addslashes(trim($_POST['id_pelanggan']));
+  $id_pelanggan             = addslashes(trim($_POST['id_pelanggan']));
   $key_keranjang            = $kode_keranjang;
   
   $query_cari_produk        = mysqli_query($koneksi,"SELECT * FROM produk WHERE id_produk=$id_produk");
@@ -121,11 +121,12 @@ if(isset($_POST['hapus_keranjang_peitem'])){
     $total_bayar_hidden       = addslashes(trim($_POST['total_bayar_hidden']));
     $catatan                  = addslashes(trim($_POST['catatan']));
     $id_pelanggan             = addslashes(trim($_POST['id_pelanggan']));
+    $id_supir                 = addslashes(trim($_POST['id_supir']));
     $dari_mana_mengetahui     = addslashes(trim($_POST['dari_mana_mengetahui']));
     $result_lainya            = addslashes(trim($_POST['result_lainya']));
     $key_keranjang            = md5($kode_keranjang);
    
-    $sql = mysqli_query($koneksi, "INSERT INTO transaksi values('','$id_pelanggan','$kode_keranjang','$total_qty','$total_bayar_hidden','$catatan',NOW(),'$key_keranjang','$oleh','$dari_mana_mengetahui','$result_lainya')");
+    $sql = mysqli_query($koneksi, "INSERT INTO transaksi values('','$id_pelanggan','$id_supir','$kode_keranjang','$total_qty','$total_bayar_hidden','$catatan',NOW(),'$key_keranjang','$oleh','$dari_mana_mengetahui','$result_lainya')");
     $sql = mysqli_query($koneksi, "UPDATE keranjang SET status_keranjang='1' WHERE kode_keranjang='$kode_keranjang' AND oleh='$oleh'");
       if ($sql) { 
         header("Location: ../nota.php?kode_keranjang=".$kode_keranjang);
