@@ -53,7 +53,15 @@
         <div class="row">
           <!-- /.col -->
           <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block m-2">Sign In</button>
+          </div>
+          <!-- /.col -->
+        </div>
+
+        <div class="row">
+          <!-- /.col -->
+          <div class="col-12">
+            <a href="https://lizapermata.my.id" class="btn btn-secondary btn-block m-2">Pilihan Login</a>
           </div>
           <!-- /.col -->
         </div>
